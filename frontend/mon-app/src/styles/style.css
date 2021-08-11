@@ -1,0 +1,15 @@
+.nav {
+  display: flex;
+  justify-content: center;
+}
+.contentContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+#boxContent {
+  width: 50%;
+}
+.cardElement {
+  margin: 20px;
+}

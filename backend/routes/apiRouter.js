@@ -9,11 +9,13 @@ exports.router = (function () {
   // Users routes
   apiRouter.route('/users/register/').post(usersCtrl.register);
   apiRouter.route('/users/login/').post(usersCtrl.login);
-  apiRouter.route('/users/me/').get(usersCtrl.getUserProfile);
-  apiRouter.route('/users/me/').put(usersCtrl.updateUserProfile);
+  apiRouter.route('/users/me/').post(auth, usersCtrl.getUserProfile);
+  apiRouter.route('/users/me/').put(auth, usersCtrl.updateUserProfile);
 
   // Content routes
   apiRouter.route('/content/new/').post(contentCtrl.createContent);
   apiRouter.route('/content/').get(auth, contentCtrl.listContents);
+  apiRouter.route('/content/me').post(auth, contentCtrl.listUserContents);
+
   return apiRouter;
 })();

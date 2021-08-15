@@ -7,12 +7,10 @@ const ITEMS_LIMIT = 50;
 // Routes
 module.exports = {
   createContent: function (req, res) {
-    // Getting auth header
-    var headerAuth = req.headers['authorization'];
-    var userId = jwtUtils.getUserId(headerAuth);
     // Params
     let title = req.body.title;
     let content = req.body.content;
+    let userId = req.body.userId;
     if (title == null || content == null) {
       return res.status(400).json({ error: 'missing parameters' });
     }
@@ -52,7 +50,7 @@ module.exports = {
     try {
       const posts = await models.Content.findAll({
         attributes: ['id', 'content', 'title', 'createdAt'],
-        order: [['createdAt', 'ASC']],
+        order: [['createdAt', 'DESC']],
         include: [
           {
             model: models.User,
@@ -60,7 +58,28 @@ module.exports = {
           }
         ]
       });
-      console.log(posts);
+      res.status(200).send(posts);
+    } catch (error) {
+      return res.status(500).send({
+        error: 'Une erreur est survenu lors de la récupération des posts '
+      });
+    }
+  },
+  listUserContents: async function (req, res) {
+    let userId = req.body.dataUser;
+    try {
+      const posts = await models.Content.findAll({
+        where: { userId: userId },
+        attributes: ['id', 'content', 'title', 'createdAt'],
+        order: [['createdAt', 'DESC']],
+        include: [
+          {
+            model: models.User,
+            attributes: ['username', 'id']
+          }
+        ]
+      });
+
       res.status(200).send(posts);
     } catch (error) {
       return res.status(500).send({

@@ -104,11 +104,7 @@ module.exports = {
       });
   },
   getUserProfile: function (req, res) {
-    // Getting auth header
-    var headerAuth = req.headers['authorization'];
-    var userId = jwtUtils.getUserId(headerAuth);
-
-    if (userId < 0) return res.status(400).json({ error: 'wrong token' });
+    let userId = req.body.userData;
 
     models.User.findOne({
       attributes: ['id', 'email', 'username', 'bio'],
@@ -126,8 +122,6 @@ module.exports = {
       });
   },
   updateUserProfile: function (req, res) {
-    var headerAuth = req.headers['authorization'];
-    var userId = jwtUtils.getUserId(headerAuth);
     // Params
     var bio = req.body.bio;
     models.User.findOne({

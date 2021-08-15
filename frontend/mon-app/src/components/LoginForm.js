@@ -18,6 +18,7 @@ const LoginForm = () => {
       data: data
     })
       .then(response => {
+        localStorage.setItem('userId', response.data.userId);
         localStorage.setItem('token', 'bearer' + ' ' + response.data.token);
       })
       .catch(error => {

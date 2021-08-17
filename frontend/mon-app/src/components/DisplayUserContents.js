@@ -16,6 +16,7 @@ const api = axios.create({
     }
   }
 });
+// Paramètres DisplayUserContents
 const params = new URLSearchParams();
 params.append('dataUser', localStorage.getItem('userId'));
 
@@ -28,11 +29,23 @@ class DisplayUserContents extends Component {
     super(props);
     this.getUserContents();
   }
+
+  // Requête permettant de récupérer les articles de l'utilisateur
   getUserContents = async () => {
     let data = await api.post('/', params).then(({ data }) => data);
     this.setState({ contents: data });
   };
 
+  // Requête permettant de supprimer le contenu selectionné par l'utilisateur
+  async deleteUserContent(contentId) {
+    const paramsId = new URLSearchParams();
+    paramsId.append('contentId', contentId);
+    await api
+      .post('/delete', paramsId)
+      .then(alert('Article supprimé!'))
+      .catch();
+    this.getUserContents();
+  }
   render() {
     return (
       <div>
@@ -45,7 +58,12 @@ class DisplayUserContents extends Component {
                   <Card.Body>
                     <Card.Title>{content.title}</Card.Title>
                     <Card.Text>{content.content}</Card.Text>
-                    <Button variant='primary'>Supprimer</Button>
+                    <Button
+                      variant='primary'
+                      onClick={() => this.deleteUserContent(content.id)}
+                    >
+                      Supprimer
+                    </Button>
                   </Card.Body>
                   <Card.Footer className='text-muted'>2 days ago</Card.Footer>
                 </Card>

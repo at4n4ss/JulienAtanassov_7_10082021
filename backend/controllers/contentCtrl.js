@@ -4,7 +4,7 @@ const TITLE_LIMIT = 20;
 const CONTENT_LIMIT = 100;
 const ITEMS_LIMIT = 50;
 
-// Routes
+// Fonctions controllant les articles
 module.exports = {
   createContent: function (req, res) {
     // Params
@@ -45,7 +45,7 @@ module.exports = {
         });
       });
   },
-
+  // Afficher tous les articles
   listContents: async function (req, res) {
     try {
       const posts = await models.Content.findAll({
@@ -65,6 +65,7 @@ module.exports = {
       });
     }
   },
+  // Afficher les articles de l'utilisateur
   listUserContents: async function (req, res) {
     let userId = req.body.dataUser;
     try {
@@ -84,6 +85,37 @@ module.exports = {
     } catch (error) {
       return res.status(500).send({
         error: 'Une erreur est survenu lors de la récupération des posts '
+      });
+    }
+  },
+  deleteUserContent: function (req, res) {
+    let contentId = req.body.contentId;
+
+    models.Content.destroy({ where: { id: contentId } });
+    res
+      .status(200)
+      .json({ res: 'post deleted' })
+      .catch(err)
+      .json({ error: 'cannot delete content' });
+  },
+  getContentById: async function (req, res) {
+    let contentId = req.body.contentId;
+    try {
+      const post = await models.Content.findOne({
+        where: { id: contentId },
+        attributes: ['id', 'content', 'title', 'createdAt'],
+        include: [
+          {
+            model: models.User,
+            attributes: ['username', 'id']
+          }
+        ]
+      });
+
+      res.status(200).send(post);
+    } catch (error) {
+      return res.status(500).send({
+        error: 'Une erreur est survenu lors de la récupération du post '
       });
     }
   }

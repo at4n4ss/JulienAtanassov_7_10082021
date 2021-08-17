@@ -1,5 +1,8 @@
+// Imports
 import Navigation from '../components/Navigation.';
 import LoginForm from '../components/LoginForm';
+
+// Page acceuil
 const Home = () => {
   return (
     <div className='home'>

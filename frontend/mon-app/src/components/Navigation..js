@@ -1,6 +1,9 @@
+// Imports
 import React from 'react';
 import '../styles/style.css';
 import Nav from 'react-bootstrap/Nav';
+
+// Composant barre de navigation
 const Navigation = () => {
   return (
     <div className='nav'>

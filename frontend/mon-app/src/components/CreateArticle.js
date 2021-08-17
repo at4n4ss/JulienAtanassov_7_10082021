@@ -1,9 +1,12 @@
+// Imports
 import React, { useState } from 'react';
 import '../styles/style.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import axios from 'axios';
+
+// Création de l'instance axios
 const api = axios.create({
   baseURL: 'http://localhost:3002/api/content/new/',
 
@@ -15,13 +18,13 @@ const api = axios.create({
   }
 });
 
+// Fonction permettant de créer un article
 const CreateArticle = () => {
   const [titleLog, setTitleLog] = useState('');
   const [contentLog, setContentLog] = useState('');
   let userId = localStorage.getItem('userId');
   let data = { title: titleLog, content: contentLog, userId: userId };
   const CreateContent = e => {
-    e.preventDefault();
     api
       .post('/', data)
       .then(alert('Article créé !'))

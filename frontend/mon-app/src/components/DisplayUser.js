@@ -1,11 +1,12 @@
+// Imports
 import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
 
+// Création de l'instance axios
 const api = axios.create({
   baseURL: 'http://localhost:3002/api/users/me',
-
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
     common: {
@@ -13,8 +14,11 @@ const api = axios.create({
     }
   }
 });
+
 const params = new URLSearchParams();
 params.append('userData', localStorage.getItem('userId'));
+
+// Composant permettant d'afficher les informations de l'utilisateur
 class DisplayUser extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +27,7 @@ class DisplayUser extends Component {
     };
     this.getUser();
   }
+  // Requête permettant de récupérer les informations de l'utilisateur
   getUser = async () => {
     let data = await api.post('/', params).then(({ data }) => data);
 

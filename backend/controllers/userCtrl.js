@@ -1,12 +1,16 @@
+// Imports
 const bcrypt = require('bcrypt');
 const jwtUtils = require('../utils/jwt.utils');
 const models = require('../models');
+
 // RegEx
 const EMAIL_REGEX =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const PASSWORD_REGEX = /^(?=.*\d).{4,8}$/;
-// Routes
+
+// Fonctions controllant les utilisateurs
 module.exports = {
+  // Inscription
   register: function (req, res) {
     // Params
     const username = req.body.username;
@@ -64,6 +68,7 @@ module.exports = {
         return res.status(500).json({ error: 'unable to verify user' });
       });
   },
+  // Connexion
   login: function (req, res) {
     // Params
     var email = req.body.email;
@@ -103,6 +108,7 @@ module.exports = {
           .json({ error: 'impossible de vérifier utilisateur' });
       });
   },
+  // Récupération des données de l'utilisateur
   getUserProfile: function (req, res) {
     let userId = req.body.userData;
 
@@ -121,6 +127,7 @@ module.exports = {
         res.status(500).json({ error: 'cannot fetch user' });
       });
   },
+  // Modification de la bio de l'utilisateur
   updateUserProfile: function (req, res) {
     // Params
     var bio = req.body.bio;

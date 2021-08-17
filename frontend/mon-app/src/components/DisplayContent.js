@@ -1,9 +1,12 @@
+// Imports
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/style.css';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import axios from 'axios';
+
+// Création de l'instance axios
 const api = axios.create({
   baseURL: 'http://localhost:3002/api/content/',
   headers: {
@@ -12,6 +15,8 @@ const api = axios.create({
     }
   }
 });
+
+// Composant permettant d'afficher les articles
 class DisplayContent extends Component {
   state = {
     contents: []
@@ -20,6 +25,8 @@ class DisplayContent extends Component {
     super(props);
     this.getContents();
   }
+
+  // Requête permettant de récupérer tous les articles
   getContents = async () => {
     let data = await api.get('/').then(({ data }) => data);
     this.setState({ contents: data });
@@ -38,7 +45,7 @@ class DisplayContent extends Component {
                   <Card.Body>
                     <Card.Title>{content.title}</Card.Title>
                     <Card.Text>{content.content}</Card.Text>
-                    <Button variant='primary'>Go somewhere</Button>
+                    <Link to={'/article/' + content.id}>Go somewhere</Link>
                   </Card.Body>
                   <Card.Footer className='text-muted'>2 days ago</Card.Footer>
                 </Card>

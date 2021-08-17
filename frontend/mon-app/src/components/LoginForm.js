@@ -1,3 +1,4 @@
+// Imports
 import React, { useState } from 'react';
 import '../styles/style.css';
 import Form from 'react-bootstrap/Form';
@@ -5,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 
 import axios from 'axios';
 
+// Fonction permettant de gérer le formulaire de connexion
 const LoginForm = () => {
   const [emailLog, setEmailLog] = useState('');
   const [passwordLog, setPasswordLog] = useState('');

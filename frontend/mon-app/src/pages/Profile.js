@@ -1,7 +1,10 @@
+// Imports
 import Navigation from '../components/Navigation.';
 import DisplayUser from '../components/DisplayUser';
 import CreateArticle from '../components/CreateArticle';
 import DisplayUserContents from '../components/DisplayUserContents';
+
+// Page Profile
 const Profile = () => {
   return (
     <div className='home'>

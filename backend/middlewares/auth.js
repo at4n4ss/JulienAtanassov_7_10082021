@@ -1,6 +1,8 @@
+// Imports
 const jwt = require('jsonwebtoken');
 const JWT_SIGN_SECRET =
   '4QDjD3s7hxYwaJGC3lTZtkswLsyuDzqSdJ9Sl5wH1uvL9IrchA7pODnvrBbWwcqt0w5nBpsDxUDqfjIxRBSH0dz2fepO6wHXDmVsBLrYKukXWK5W2X0JkczGKZUyX1XstFeA-avbi8YfmxluE0qc92bjwJhl6xMrYSHNXAmepvE';
+
 // Création du token d'authentification
 module.exports = (req, res, next) => {
   try {

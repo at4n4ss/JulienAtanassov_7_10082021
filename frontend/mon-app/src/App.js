@@ -5,7 +5,6 @@ import Articles from './pages/Articles';
 import Article from './pages/Article';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
-import Child from './components/Child';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

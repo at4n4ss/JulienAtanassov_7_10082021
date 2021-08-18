@@ -40,10 +40,7 @@ class DisplayUserContents extends Component {
   async deleteUserContent(contentId) {
     const paramsId = new URLSearchParams();
     paramsId.append('contentId', contentId);
-    await api
-      .post('/delete', paramsId)
-      .then(alert('Article supprimé!'))
-      .catch();
+    await api.post('/delete', paramsId).catch();
     this.getUserContents();
   }
   render() {

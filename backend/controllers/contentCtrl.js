@@ -41,7 +41,7 @@ module.exports = {
       })
       .catch(function (err) {
         return res.status(500).json({
-          error: 'unable to verify user'
+          error: 'unable to create content'
         });
       });
   },
@@ -58,6 +58,7 @@ module.exports = {
           }
         ]
       });
+      console.log(posts);
       res.status(200).send(posts);
     } catch (error) {
       return res.status(500).send({
@@ -92,6 +93,8 @@ module.exports = {
     let contentId = req.body.contentId;
 
     models.Content.destroy({ where: { id: contentId } });
+    models.Comment.destroy({ where: { contentId: contentId } });
+
     res
       .status(200)
       .json({ res: 'post deleted' })

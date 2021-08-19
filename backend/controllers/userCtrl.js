@@ -91,7 +91,8 @@ module.exports = {
               if (resBycrypt) {
                 return res.status(200).json({
                   userId: userFound.id,
-                  token: jwtUtils.generateTokenForUser(userFound)
+                  token: jwtUtils.generateTokenForUser(userFound),
+                  username: userFound.username
                 });
               } else {
                 return res.status(403).json({ error: 'mot de passe invalide' });
@@ -113,7 +114,7 @@ module.exports = {
     let userId = req.body.userData;
 
     models.User.findOne({
-      attributes: ['id', 'email', 'username', 'bio'],
+      attributes: ['id', 'email', 'username', 'bio', 'isAdmin'],
       where: { id: userId }
     })
       .then(function (user) {
@@ -150,5 +151,28 @@ module.exports = {
         res.status(404).json({ error: 'user not found' });
       }
     });
+  },
+  deleteUserProfile: function (req, res) {
+    let userInfo = req.body.userInfo;
+    models.Comment.destroy({
+      where: { userId: userInfo }
+    })
+      .catch()
+      .then(
+        models.Content.destroy({
+          where: { userId: userInfo }
+        })
+      )
+      .catch()
+      .then(
+        models.User.destroy({
+          where: { id: userInfo }
+        })
+      )
+      .catch()
+      .then(res.status(200).json({ message: 'User deleted' }))
+      .catch(function (err) {
+        res.status(500).json({ error: 'cannot delete user' });
+      });
   }
 };

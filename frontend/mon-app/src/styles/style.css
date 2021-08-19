@@ -1,13 +1,131 @@
+a {
+  text-decoration: none !important;
+  color: #fd3005 !important;
+}
 .nav {
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin-right: 0;
 }
-.contentContainer {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+.card {
+  width: auto !important;
 }
-
 .cardElement {
   margin: 20px;
+}
+/* Header */
+.navButtons {
+  margin-right: 10px;
+}
+.nav-link {
+  color: white !important;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background-color: #ffd7d7;
+}
+.disconnectContainer {
+  margin-left: 30%;
+  margin-right: 2%;
+}
+.containerLogo {
+  max-width: 300px;
+  max-height: 300px;
+  object-fit: contain;
+  margin-right: 25%;
+}
+.containerLogo img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+/* boutons */
+.btn-primary {
+  background-color: #ffd7d7 !important;
+  border-color: #ffd7d7 !important;
+}
+.registerBtn {
+  margin-left: 20px;
+}
+/* Login Page */
+.containerLogin {
+  display: flex;
+  padding: 30px 30px 50px 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.loginTitle {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin: 50px;
+  padding: 20px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.loginFormTitle {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+.loginForm {
+  width: 90%;
+  max-width: 400px;
+}
+.registerButton {
+  margin-left: 20px;
+}
+
+/* Articles page */
+.containerArticlesTitle {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.containerArticles {
+  border-radius: 100px;
+  padding: 20px;
+}
+
+/* Profile page */
+.componentsContainer {
+  padding: 30px;
+  margin: 30px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.profileTitle {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.userCard {
+  max-width: 95%;
+}
+
+/* Article page */
+.card {
+  border: 0px !important;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 12px;
+  width: auto;
+}
+.containerArticle {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+.containerComments {
+  padding: 20px;
+  width: 100%;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.containerArticleContent {
+  max-width: 90%;
+  padding: 20px;
+  margin: 30px;
+  text-align: center;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }

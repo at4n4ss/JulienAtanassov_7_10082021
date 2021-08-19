@@ -62,7 +62,6 @@ class DisplayUserContents extends Component {
                       Supprimer
                     </Button>
                   </Card.Body>
-                  <Card.Footer className='text-muted'>2 days ago</Card.Footer>
                 </Card>
               </div>
             ))}

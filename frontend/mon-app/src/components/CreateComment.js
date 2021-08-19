@@ -29,7 +29,7 @@ const CreateComment = () => {
   const PostComment = e => {
     const params = new URLSearchParams();
     params.append('contentId', contentId);
-    params.append('userId', userId);
+    params.append('userData', userId);
     params.append('contentComment', contentLog);
     api
       .post('/', params)

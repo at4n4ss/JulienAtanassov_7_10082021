@@ -5,7 +5,7 @@ module.exports = {
     // Params
     let contentId = req.body.contentId;
     let contentComment = req.body.contentComment;
-    let userId = req.body.userId;
+    let userId = req.body.userData;
     console.log(userId);
 
     if (contentComment == null) {
@@ -43,7 +43,7 @@ module.exports = {
   },
   displayComments: async function (req, res) {
     let contentId = req.body.contentId;
-    console.log(contentId);
+
     try {
       const comments = await models.Comment.findAll({
         where: { contentId: contentId },
@@ -58,6 +58,63 @@ module.exports = {
       });
 
       res.status(200).send(comments);
+    } catch (error) {
+      return res.status(500).send({
+        error:
+          'Une erreur est survenu lors de la récupération des commentaires '
+      });
+    }
+  },
+  displayUserComments: async function (req, res) {
+    let userId = req.body.userData;
+
+    try {
+      const comments = await models.Comment.findAll({
+        where: { userId: userId },
+        attributes: ['id', 'contentComment', 'createdAt'],
+        order: [['createdAt', 'DESC']],
+        include: [
+          {
+            model: models.User,
+            attributes: ['username', 'id']
+          }
+        ]
+      });
+
+      res.status(200).send(comments);
+    } catch (error) {
+      return res.status(500).send({
+        error:
+          'Une erreur est survenu lors de la récupération des commentaires '
+      });
+    }
+  },
+  deleteUserComment: function (req, res) {
+    let commentId = req.body.commentId;
+
+    models.Comment.destroy({ where: { id: commentId } });
+
+    res
+      .status(200)
+      .json({ res: 'comment deleted' })
+      .catch(err)
+      .json({ error: 'cannot delete comment' });
+  },
+  // Afficher tous les commentaires
+  listComments: async function (req, res) {
+    try {
+      const posts = await models.Comment.findAll({
+        attributes: ['id', 'contentComment', 'createdAt'],
+        order: [['createdAt', 'DESC']],
+        include: [
+          {
+            model: models.User,
+            attributes: ['username', 'id']
+          }
+        ]
+      });
+      console.log(posts);
+      res.status(200).send(posts);
     } catch (error) {
       return res.status(500).send({
         error:

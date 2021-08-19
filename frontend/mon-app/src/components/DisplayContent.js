@@ -35,24 +35,18 @@ class DisplayContent extends Component {
   render() {
     return (
       <div>
-        <Container id='boxContent'>
-          <div className='contentContainer'>
-            {this.state.contents.map(content => (
-              <div key={content.id}>
-                <div className='cardElement'></div>
-                <Card className='text-center'>
-                  <Card.Header>{content.User.username}</Card.Header>
-                  <Card.Body>
-                    <Card.Title>{content.title}</Card.Title>
-                    <Card.Text>{content.content}</Card.Text>
-                    <Link to={'/article/' + content.id}>Go somewhere</Link>
-                  </Card.Body>
-                  <Card.Footer className='text-muted'>2 days ago</Card.Footer>
-                </Card>
-              </div>
-            ))}
+        {this.state.contents.map(content => (
+          <div className='containerArticles' key={content.id}>
+            <Card className='text-center'>
+              <Card.Header>{content.User.username}</Card.Header>
+              <Card.Body>
+                <Card.Title>{content.title}</Card.Title>
+                <Card.Text>{content.content}</Card.Text>
+                <Link to={'/article/' + content.id}>Accéder au topic</Link>
+              </Card.Body>
+            </Card>
           </div>
-        </Container>
+        ))}
       </div>
     );
   }

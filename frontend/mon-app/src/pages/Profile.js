@@ -3,18 +3,41 @@ import Navigation from '../components/Navigation.';
 import DisplayUser from '../components/DisplayUser';
 import CreateArticle from '../components/CreateArticle';
 import DisplayUserContents from '../components/DisplayUserContents';
-
+import DisplayUserComments from '../components/DisplayUserComments';
+import DeleteUser from '../components/DeleteUser';
+import Container from 'react-bootstrap/Container';
 // Page Profile
 const Profile = () => {
   return (
     <div className='home'>
       <Navigation />
-      <h1>Profile</h1>
-      <DisplayUser />
-      <h1>Rédiger un article</h1>
-      <CreateArticle />
-      <h1>Mes articles</h1>
-      <DisplayUserContents />
+      <Container>
+        <div className='componentsContainer'>
+          <div className='profileTitles'>
+            <h2>Profile</h2>
+          </div>
+          <DisplayUser />
+          <DeleteUser />
+        </div>
+        <div className='componentsContainer'>
+          <div className='profileTitles'>
+            <h2>Rédiger un article</h2>
+          </div>
+          <CreateArticle />
+        </div>
+        <div className='componentsContainer'>
+          <div className='profileTitles'>
+            <h2>Mes articles</h2>
+          </div>
+          <DisplayUserContents />
+        </div>
+        <div className='componentsContainer'>
+          <div className='profileTitles'>
+            <h2>Mes commentaires</h2>
+          </div>
+          <DisplayUserComments />
+        </div>
+      </Container>
     </div>
   );
 };

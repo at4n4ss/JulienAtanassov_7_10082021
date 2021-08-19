@@ -4,9 +4,11 @@ import '../styles/style.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 // Composant formulaire d'inscription
 const RegisterForm = () => {
+  const history = useHistory();
   const [emailReg, setEmailReg] = useState('');
   const [usernameReg, setUsernameReg] = useState('');
   const [passwordReg, setPasswordReg] = useState('');
@@ -21,6 +23,7 @@ const RegisterForm = () => {
     })
       .then(response => {
         alert('Compte créé');
+        history.push('/');
         console.log(response);
       })
       .catch(error => {

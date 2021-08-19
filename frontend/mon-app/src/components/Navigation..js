@@ -5,13 +5,36 @@ import Nav from 'react-bootstrap/Nav';
 import { useHistory } from 'react-router-dom';
 import logo from '../logos/icon-left-font.png';
 import Container from 'react-bootstrap/Container';
-// Composant barre de navigation
-const Navigation = () => {
-  const history = useHistory();
-  const user = { id: 1, isAdmin: 0 };
+import axios from 'axios';
 
-  const isAuth = () => {
-    if (user.isAdmin === 1) {
+// Création de l'instance axios
+const api = axios.create({
+  baseURL: 'http://localhost:3002/api/users/me',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded',
+    common: {
+      Authorization: localStorage.getItem('token')
+    }
+  }
+});
+
+const params = new URLSearchParams();
+params.append('userData', localStorage.getItem('userId'));
+// Composant barre de navigation
+
+const Navigation = () => {
+  let [isAuth, setIsAuth] = useState('');
+  const history = useHistory();
+
+  const getUser = async () => {
+    let data = await api.post('/', params).then(({ data }) => data);
+
+    setIsAuth(data.isAdmin);
+  };
+  getUser();
+  const isUserAuth = () => {
+    if (isAuth === 2) {
+      console.log(isAuth);
       return true;
     }
   };
@@ -42,7 +65,7 @@ const Navigation = () => {
             </button>
           </div>
           <Nav.Item>
-            {isAuth() === true && <Nav.Link href='/admin'>Admin</Nav.Link>}
+            {isUserAuth() === true && <Nav.Link href='/admin'>Admin</Nav.Link>}
           </Nav.Item>
         </Nav>
       </Container>

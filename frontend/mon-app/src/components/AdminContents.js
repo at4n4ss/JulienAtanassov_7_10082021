@@ -17,7 +17,7 @@ const api = axios.create({
   }
 });
 
-// Composant permettant l'affichage des articles de l'utilisateur
+// Composant permettant l'affichage des articles des utilisateurs
 class AdminContents extends Component {
   state = {
     contents: []
@@ -27,13 +27,13 @@ class AdminContents extends Component {
     this.getUserContents();
   }
 
-  // Requête permettant de récupérer les articles de l'utilisateur
+  // Requête permettant de récupérer les articles des utilisateurs
   getUserContents = async () => {
     let data = await api.get('/').then(({ data }) => data);
     this.setState({ contents: data });
   };
 
-  // Requête permettant de supprimer le contenu selectionné par l'utilisateur
+  // Requête permettant de supprimer le contenu selectionné par l'admin
   async deleteUserContent(contentId) {
     const paramsId = new URLSearchParams();
     paramsId.append('contentId', contentId);

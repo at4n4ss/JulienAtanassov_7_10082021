@@ -1,3 +1,4 @@
+// Imports
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import Container from 'react-bootstrap/Container';
@@ -14,6 +15,7 @@ const api = axios.create({
   }
 });
 
+// Composant permettant d'afficher les commentaires d'un article
 class DisplayComments extends Component {
   state = {
     contents: []

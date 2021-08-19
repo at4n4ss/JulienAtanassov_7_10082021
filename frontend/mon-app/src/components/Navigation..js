@@ -5,27 +5,13 @@ import Nav from 'react-bootstrap/Nav';
 import { useHistory } from 'react-router-dom';
 import logo from '../logos/icon-left-font.png';
 import Container from 'react-bootstrap/Container';
-import axios from 'axios';
-// Création de l'instance axios
-const api = axios.create({
-  baseURL: 'http://localhost:3002/api/users/me',
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded',
-    common: {
-      Authorization: localStorage.getItem('token')
-    }
-  }
-});
-const params = new URLSearchParams();
-params.append('userData', localStorage.getItem('userId'));
 // Composant barre de navigation
 const Navigation = () => {
   const history = useHistory();
+  const user = { id: 1, isAdmin: 0 };
 
-  const isAuth = async () => {
-    let data = await api.post('/', params).then(({ data }) => data);
-    console.log(data.isAdmin);
-    if (data.isAdmin === false) {
+  const isAuth = () => {
+    if (user.isAdmin === 1) {
       return true;
     }
   };

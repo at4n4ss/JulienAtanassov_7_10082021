@@ -17,7 +17,7 @@ const api = axios.create({
   }
 });
 
-// Composant permettant l'affichage des articles de l'utilisateur
+// Composant permettant l'affichage de tous les articles
 class AdminComments extends Component {
   state = {
     comments: []
@@ -27,13 +27,13 @@ class AdminComments extends Component {
     this.getUserComments();
   }
 
-  // Requête permettant de récupérer les articles de l'utilisateur
+  // Requête permettant de récupérer tous les commentaires des utilisateurs
   getUserComments = async () => {
     let data = await api.get('/all/').then(({ data }) => data);
     this.setState({ comments: data });
   };
 
-  // Requête permettant de supprimer le contenu selectionné par l'utilisateur
+  // Requête permettant de supprimer le commentaire selectionné par l'admin
   async deleteUserComment(commentId) {
     const paramsId = new URLSearchParams();
     paramsId.append('commentId', commentId);

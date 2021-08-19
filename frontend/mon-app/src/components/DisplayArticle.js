@@ -1,3 +1,4 @@
+// Imports
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import Container from 'react-bootstrap/Container';
@@ -13,7 +14,7 @@ const api = axios.create({
     }
   }
 });
-
+// Composant permettant d'afficher un article selon son id
 class DisplayArticle extends Component {
   getContentId = async () => {
     const contentId = qs.parse(this.props.match.params, {

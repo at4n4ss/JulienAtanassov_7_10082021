@@ -1,9 +1,8 @@
 // Imports
-
 import LoginForm from '../components/LoginForm';
 import IsConnected from '../components/IsConnected';
 import Container from 'react-bootstrap/Container';
-import { useHistory } from 'react-router-dom';
+
 // Page acceuil
 const Home = () => {
   IsConnected();

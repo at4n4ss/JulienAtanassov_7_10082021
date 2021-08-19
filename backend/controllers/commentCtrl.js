@@ -1,6 +1,9 @@
 const models = require('../models');
 const CONTENT_LIMIT = 100;
+
+// Fonctions controllant les commentaires
 module.exports = {
+  // Permet de creer un commentaire
   createComment: function (req, res) {
     // Params
     let contentId = req.body.contentId;
@@ -41,6 +44,7 @@ module.exports = {
         });
       });
   },
+  // Affiche les commentaires d'un article
   displayComments: async function (req, res) {
     let contentId = req.body.contentId;
 
@@ -65,6 +69,7 @@ module.exports = {
       });
     }
   },
+  // Renvoi les commentaires de l'utilisateur
   displayUserComments: async function (req, res) {
     let userId = req.body.userData;
 
@@ -89,6 +94,7 @@ module.exports = {
       });
     }
   },
+  // Supprimer le commentaire
   deleteUserComment: function (req, res) {
     let commentId = req.body.commentId;
 

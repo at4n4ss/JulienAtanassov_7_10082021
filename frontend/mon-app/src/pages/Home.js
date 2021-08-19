@@ -5,9 +5,9 @@ import Container from 'react-bootstrap/Container';
 
 // Page acceuil
 const Home = () => {
-  IsConnected();
   return (
     <div className='home'>
+      <IsConnected />
       <Container>
         <Container>
           <div className='loginTitle'>

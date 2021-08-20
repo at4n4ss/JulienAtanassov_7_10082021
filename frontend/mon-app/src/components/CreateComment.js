@@ -53,10 +53,11 @@ const CreateComment = () => {
               placeholder='Contenu de votre commentaire'
             />
           </Form.Group>
-
-          <Button onClick={PostComment} variant='primary' type='submit'>
-            Ajouter un commentaire
-          </Button>
+          <div className='buttonContainer'>
+            <Button onClick={PostComment} variant='primary' type='submit'>
+              Ajouter un commentaire
+            </Button>
+          </div>
         </Form>
       </Container>
     </div>

@@ -55,12 +55,13 @@ class DisplayUserContents extends Component {
                   <Card.Body>
                     <Card.Title>{content.title}</Card.Title>
                     <Card.Text>{content.content}</Card.Text>
-                    <Button
-                      variant='primary'
-                      onClick={() => this.deleteUserContent(content.id)}
-                    >
-                      Supprimer
-                    </Button>
+                    <div className='buttonContainer'>
+                      <Button
+                        onClick={() => this.deleteUserContent(content.id)}
+                      >
+                        Supprimer
+                      </Button>
+                    </div>
                   </Card.Body>
                 </Card>
               </div>

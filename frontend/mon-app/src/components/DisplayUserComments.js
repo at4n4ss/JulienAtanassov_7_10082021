@@ -54,12 +54,14 @@ class DisplayUserComments extends Component {
                 <Card className='text-center'>
                   <Card.Body>
                     <Card.Text>{comment.contentComment}</Card.Text>
-                    <Button
-                      variant='primary'
-                      onClick={() => this.deleteUserComment(comment.id)}
-                    >
-                      Supprimer
-                    </Button>
+                    <div className='buttonContainer'>
+                      <Button
+                        variant='primary'
+                        onClick={() => this.deleteUserComment(comment.id)}
+                      >
+                        Supprimer
+                      </Button>
+                    </div>
                   </Card.Body>
                 </Card>
               </div>

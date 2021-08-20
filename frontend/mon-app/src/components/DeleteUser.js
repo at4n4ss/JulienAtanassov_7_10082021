@@ -35,9 +35,11 @@ class DeleteUser extends Component {
       <div>
         <Container id='boxContent'>
           <div className='contentContainer'>
-            <button className='btn btn-primary' onClick={this.deleteUser}>
-              Supprimer votre profil
-            </button>
+            <div className='buttonContainer'>
+              <button className='btn btn-primary' onClick={this.deleteUser}>
+                Supprimer votre profil
+              </button>
+            </div>
           </div>
         </Container>
       </div>

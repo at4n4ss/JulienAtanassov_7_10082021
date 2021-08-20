@@ -11,9 +11,12 @@ const Articles = () => {
         <Container>
           <div className='containerArticles'>
             <div className='containerArticlesTitle'>
-              <h2>
-                Participez aux forums ou créez le votre dans votre page profile!
-              </h2>
+              <div className='containerTitleArticles'>
+                <h2>
+                  Participez aux forums ou créez le votre dans votre page
+                  profile!
+                </h2>
+              </div>
             </div>
             <div>
               <DisplayContent />

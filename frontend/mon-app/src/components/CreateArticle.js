@@ -57,10 +57,11 @@ const CreateArticle = () => {
               placeholder='Contenu de votre article'
             />
           </Form.Group>
-
-          <Button onClick={CreateContent} variant='primary' type='submit'>
-            Créer l'article
-          </Button>
+          <div className='buttonContainer'>
+            <Button onClick={CreateContent} variant='primary' type='submit'>
+              Créer l'article
+            </Button>
+          </div>
         </Form>
       </Container>
     </div>

@@ -59,6 +59,7 @@ const LoginForm = () => {
       <Button onClick={login} variant='primary' type='submit'>
         Se connecter
       </Button>
+
       <Button onClick={redirect} className='registerBtn' variant='primary'>
         S'inscrire
       </Button>

@@ -60,9 +60,11 @@ const Navigation = () => {
           </Nav.Item>
 
           <div className='disconnectContainer'>
-            <button onClick={disconnectUser} className='btn btn-primary'>
-              Déconnexion
-            </button>
+            <div className='buttonContainer'>
+              <button onClick={disconnectUser} className='btn btn-primary'>
+                Déconnexion
+              </button>
+            </div>
           </div>
           <Nav.Item>
             {isUserAuth() === true && <Nav.Link href='/admin'>Admin</Nav.Link>}

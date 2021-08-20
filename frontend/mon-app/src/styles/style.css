@@ -15,6 +15,9 @@ a {
   margin: 20px;
 }
 /* Header */
+.containerAdminButton {
+  margin-left: 10px;
+}
 .containerNavButtons {
   width: 50%;
   justify-content: flex-end;
@@ -55,6 +58,8 @@ a {
 .btn-primary {
   background-color: #fd3207 !important;
   border-color: #ffd7d7 !important;
+  border-radius: 10px;
+  height: 44px;
 }
 .btn-primary :hover {
   transition: none !important;
@@ -174,9 +179,13 @@ button:focus {
 
 /* Sur les écrans, quand la largeur de la fenêtre fait au maximum 1280px */
 @media screen and (max-width: 1280px) {
+  .disconnectContainer {
+    margin-left: 10px;
+  }
 }
 @media screen and (max-width: 1010px) {
   .containerNavButtons {
+    width: 100%;
     flex-wrap: wrap;
     justify-content: center;
   }

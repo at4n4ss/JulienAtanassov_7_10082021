@@ -37,10 +37,13 @@ class DisplayUserContents extends Component {
   };
 
   // Requête permettant de supprimer le contenu selectionné par l'utilisateur
-  async deleteUserContent(contentId) {
+  async postDelete(contentId) {
     const paramsId = new URLSearchParams();
     paramsId.append('contentId', contentId);
     await api.post('/delete', paramsId).catch();
+  }
+  async deleteUserContent(contentId) {
+    await this.postDelete(contentId);
     this.getUserContents();
   }
   render() {

@@ -62,7 +62,7 @@ const Navigation = () => {
           <div className='containerNavButtons'>
             <Nav.Item>
               <Nav.Link className='navButtons' href='/articles'>
-                Articles
+                Forums
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>

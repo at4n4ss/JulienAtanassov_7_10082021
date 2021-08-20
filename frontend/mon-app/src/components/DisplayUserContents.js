@@ -45,6 +45,7 @@ class DisplayUserContents extends Component {
   async deleteUserContent(contentId) {
     await this.postDelete(contentId);
     this.getUserContents();
+    window.location.reload();
   }
   render() {
     return (

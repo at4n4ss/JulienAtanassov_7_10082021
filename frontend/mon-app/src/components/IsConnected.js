@@ -12,23 +12,27 @@ const api = axios.create({
   }
 });
 
-const params = new URLSearchParams();
-params.append('userData', localStorage.getItem('userId'));
-
 const IsConnected = () => {
   let [isAuth, setIsAuth] = useState('');
-
+  const params = new URLSearchParams();
+  params.append('userData', localStorage.getItem('userId'));
   const getUser = async () => {
-    api.post('/', params).then(({ data }) => data);
+    const data = await api.post('/', params).then(({ data }) => data);
+    console.log(data);
+    if (data) {
+      setIsAuth(true);
+    }
   };
-
+  getUser();
   const isUserAuth = () => {
-    if (getUser()) {
+    if (isAuth === true) {
       return true;
+    } else {
+      return false;
     }
   };
 
-  return <div>{isUserAuth() === false && <Redirect to='/articles' />}</div>;
+  return <div>{isUserAuth() === true && <Redirect to='/articles' />}</div>;
 };
 
 export default IsConnected;

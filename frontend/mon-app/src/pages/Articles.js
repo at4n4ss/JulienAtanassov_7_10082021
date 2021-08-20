@@ -2,8 +2,18 @@
 import Navigation from '../components/Navigation.';
 import DisplayContent from '../components/DisplayContent';
 import Container from 'react-bootstrap/Container';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
+
 // Page Articles
+
 const Articles = () => {
+  const history = useHistory();
+  const handleRefresh = () => {};
+
+  useEffect(() => {
+    // Met à jour le titre du document via l’API du navigateur
+  }, []);
   return (
     <div className='articles'>
       <Navigation />

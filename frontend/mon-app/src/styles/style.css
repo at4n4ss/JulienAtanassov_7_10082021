@@ -4,7 +4,7 @@ a {
 }
 .nav {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin-right: 0;
 }
@@ -15,8 +15,19 @@ a {
   margin: 20px;
 }
 /* Header */
+.containerNavButtons {
+  width: 50%;
+  justify-content: flex-end;
+  display: flex;
+}
 .navButtons {
   margin-right: 10px;
+}
+.containerLogButton {
+  display: flex;
+}
+.logButton {
+  width: 125px;
 }
 .nav-link {
   color: white !important;
@@ -25,6 +36,7 @@ a {
   background-color: #fd3207;
 }
 .disconnectContainer {
+  width: 120px;
   margin-left: 25%;
 }
 .containerLogo {
@@ -34,25 +46,11 @@ a {
   margin-right: 25%;
 }
 .containerLogo img {
-  width: 200px;
+  width: 250px;
   height: 200px;
   object-fit: cover;
 }
-.homeImgContainer {
-  margin-left: 24%;
 
-  max-width: 500px;
-  max-height: 500px;
-  object-fit: contain;
-}
-.homeImgContainer img {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  width: 600px;
-  height: 230px;
-  object-fit: cover;
-}
 /* boutons */
 .btn-primary {
   background-color: #fd3207 !important;
@@ -77,6 +75,16 @@ button:focus {
   height: 38px;
 }
 /* Login Page */
+.homeImgContainer {
+  max-width: 500px;
+  max-height: 500px;
+  object-fit: contain;
+}
+.homeImgContainer img {
+  width: 90%;
+  height: 230px;
+  object-fit: cover;
+}
 .containerLogin {
   display: flex;
   padding: 30px 30px 50px 30px;
@@ -162,4 +170,14 @@ button:focus {
   margin: 30px;
   text-align: center;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+/* Sur les écrans, quand la largeur de la fenêtre fait au maximum 1280px */
+@media screen and (max-width: 1280px) {
+}
+@media screen and (max-width: 1010px) {
+  .containerNavButtons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }

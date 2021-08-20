@@ -1,5 +1,5 @@
 // Imports
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/style.css';
 import Nav from 'react-bootstrap/Nav';
 import { useHistory } from 'react-router-dom';
@@ -18,24 +18,33 @@ const api = axios.create({
   }
 });
 
-const params = new URLSearchParams();
-params.append('userData', localStorage.getItem('userId'));
 // Composant barre de navigation
 
 const Navigation = () => {
+  const params = new URLSearchParams();
+  params.append('userData', localStorage.getItem('userId'));
   let [isAuth, setIsAuth] = useState('');
   const history = useHistory();
 
   const getUser = async () => {
+    console.log(params.UserData);
     let data = await api.post('/', params).then(({ data }) => data);
-
+    console.log(data.isAdmin);
     setIsAuth(data.isAdmin);
   };
-  getUser();
+  useEffect(() => {
+    console.log('isAuth updated', isAuth);
+  }, [isAuth]);
+  useEffect(() => {
+    getUser();
+  }, [history]);
+
   const isUserAuth = () => {
     if (isAuth === 2) {
       console.log(isAuth);
       return true;
+    } else {
+      return false;
     }
   };
 
@@ -50,25 +59,28 @@ const Navigation = () => {
           <div className='containerLogo'>
             <img className='logoNav' src={logo} alt='logo' />
           </div>
-          <Nav.Item>
-            <Nav.Link className='navButtons' href='/articles'>
-              Articles
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href='/profile'>Profile</Nav.Link>
-          </Nav.Item>
-
-          <div className='disconnectContainer'>
-            <div className='buttonContainer'>
-              <button onClick={disconnectUser} className='btn btn-primary'>
-                Déconnexion
-              </button>
+          <div className='containerNavButtons'>
+            <Nav.Item>
+              <Nav.Link className='navButtons' href='/articles'>
+                Articles
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href='/profile'>Profile</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              {isUserAuth() === true && (
+                <Nav.Link href='/admin'>Admin</Nav.Link>
+              )}
+            </Nav.Item>
+            <div className='disconnectContainer'>
+              <div className='buttonContainer'>
+                <button onClick={disconnectUser} className='btn btn-primary'>
+                  Déconnexion
+                </button>
+              </div>
             </div>
           </div>
-          <Nav.Item>
-            {isUserAuth() === true && <Nav.Link href='/admin'>Admin</Nav.Link>}
-          </Nav.Item>
         </Nav>
       </Container>
     </div>

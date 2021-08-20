@@ -1,5 +1,5 @@
 // Imports
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/style.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -12,9 +12,10 @@ const LoginForm = () => {
   const [emailLog, setEmailLog] = useState('');
   const [passwordLog, setPasswordLog] = useState('');
   let URL = 'http://localhost:3002/api/users/login';
-  let data = { email: emailLog, password: passwordLog };
 
+  useEffect(() => {}, []);
   const login = e => {
+    let data = { email: emailLog, password: passwordLog };
     e.preventDefault();
     axios(URL, {
       method: 'POST',
@@ -55,14 +56,16 @@ const LoginForm = () => {
           placeholder='Password'
         />
       </Form.Group>
-
-      <Button onClick={login} variant='primary' type='submit'>
-        Se connecter
-      </Button>
-
-      <Button onClick={redirect} className='registerBtn' variant='primary'>
-        S'inscrire
-      </Button>
+      <div className='containerLogButton'>
+        <div className='logButton'>
+          <Button onClick={login} variant='primary' type='submit'>
+            Se connecter
+          </Button>
+        </div>
+        <Button onClick={redirect} className='registerBtn' variant='primary'>
+          S'inscrire
+        </Button>
+      </div>
     </Form>
   );
 };

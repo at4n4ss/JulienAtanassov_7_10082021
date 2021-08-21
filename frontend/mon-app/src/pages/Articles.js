@@ -3,14 +3,14 @@ import Navigation from '../components/Navigation.';
 import DisplayContent from '../components/DisplayContent';
 import IsNotConnected from '../components/IsNotConnected';
 import Container from 'react-bootstrap/Container';
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router';
+import React from 'react';
 
 // Page Articles
 
 const Articles = () => {
   return (
     <div className='articles'>
+      <IsNotConnected />
       <Navigation />
       <Container>
         <Container>
@@ -29,7 +29,6 @@ const Articles = () => {
           </div>
         </Container>
       </Container>
-      <IsNotConnected />
     </div>
   );
 };

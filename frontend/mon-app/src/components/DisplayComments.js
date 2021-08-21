@@ -24,22 +24,20 @@ class DisplayComments extends Component {
     const contentId = qs.parse(this.props.match.params, {
       ignoreQueryPrefix: true
     }).id;
-    console.log(contentId);
+
     const params = new URLSearchParams();
     params.append('contentId', contentId);
-    console.log(params.contentId);
+
     let data = await api.post('/', params).then(({ data }) => data);
-    console.log(data);
     this.setState({ contents: data });
-    console.log(this.state);
   };
 
   constructor(props) {
     super(props);
-
+  }
+  componentWillMount() {
     this.getContentId();
   }
-
   render() {
     return (
       <div>

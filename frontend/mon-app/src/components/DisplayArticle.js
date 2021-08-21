@@ -33,9 +33,10 @@ class DisplayArticle extends Component {
     this.state = {
       article: { title: null, id: null, content: null }
     };
+  }
+  componentWillMount() {
     this.getContentId();
   }
-
   render() {
     return (
       <div>

@@ -28,9 +28,10 @@ class DisplayUserContents extends Component {
   };
   constructor(props) {
     super(props);
+  }
+  componentWillMount() {
     this.getUserContents();
   }
-
   // Requête permettant de récupérer les articles de l'utilisateur
   getUserContents = async () => {
     let data = await api.post('/', params).then(({ data }) => data);

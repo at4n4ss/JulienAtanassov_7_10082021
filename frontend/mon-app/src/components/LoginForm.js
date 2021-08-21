@@ -28,7 +28,7 @@ const LoginForm = () => {
         history.go();
       })
       .catch(error => {
-        console.log(error);
+        alert('Problèmes dans vos identifiants');
       });
   };
   const redirect = () => {

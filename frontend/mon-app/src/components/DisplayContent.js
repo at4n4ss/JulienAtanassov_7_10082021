@@ -22,7 +22,6 @@ class DisplayContent extends Component {
   };
   constructor(props) {
     super(props);
-    this.getContents();
   }
   componentWillMount() {
     this.getContents();

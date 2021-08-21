@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../styles/style.css';
-
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -24,7 +23,6 @@ const CreateComment = () => {
   const [contentLog, setContentLog] = useState('');
   let userId = localStorage.getItem('userId');
   let contentId = useParams().id;
-  console.log(contentId);
 
   const PostComment = e => {
     const params = new URLSearchParams();
@@ -34,9 +32,7 @@ const CreateComment = () => {
     api
       .post('/', params)
       .then(alert('Commentaire ajouté !'))
-      .catch(error => {
-        console.log(error);
-      });
+      .catch(error => {});
   };
 
   return (

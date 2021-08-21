@@ -27,9 +27,8 @@ const Navigation = () => {
   const history = useHistory();
 
   const getUser = async () => {
-    console.log(params.UserData);
     let data = await api.post('/', params).then(({ data }) => data);
-    console.log(data.isAdmin);
+
     if (data.isAdmin === 2) {
       setIsAuth(true);
     } else {
@@ -43,8 +42,6 @@ const Navigation = () => {
 
   const isUserAuth = () => {
     if (isAuth === true) {
-      console.log(isAuth);
-
       return true;
     } else {
       return false;

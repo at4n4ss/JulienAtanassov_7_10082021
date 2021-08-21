@@ -23,7 +23,7 @@ const IsNotConnected = () => {
 
   const getUser = async () => {
     const data = localStorage.getItem('userId');
-    console.log(data);
+
     if (data) {
       setIsNotAuth(false);
     } else {

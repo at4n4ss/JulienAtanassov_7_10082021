@@ -22,8 +22,7 @@ const IsConnected = () => {
   let userId = localStorage.getItem('userId');
   const getUser = async () => {
     const data = await api.post('/', params).then(({ data }) => data);
-    console.log(data.id.toString());
-    console.log(userId);
+
     if (data.id.toString() === userId) {
       setIsAuth(true);
     }

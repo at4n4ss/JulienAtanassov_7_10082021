@@ -15,7 +15,7 @@ exports.router = (function () {
   apiRouter.route('/users/me/').post(auth, usersCtrl.getUserProfile);
   apiRouter.route('/users/me/').put(auth, usersCtrl.updateUserProfile);
   apiRouter.route('/users/me/delete').post(auth, usersCtrl.deleteUserProfile);
-
+  apiRouter.route('/users/me/auth').post(usersCtrl.authUser);
   // Routes  des articles
   apiRouter.route('/content/new/').post(contentCtrl.createContent);
   apiRouter.route('/content/').get(auth, contentCtrl.listContents);

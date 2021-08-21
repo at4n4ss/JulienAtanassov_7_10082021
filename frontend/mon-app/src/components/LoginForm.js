@@ -13,7 +13,6 @@ const LoginForm = () => {
   const [passwordLog, setPasswordLog] = useState('');
   let URL = 'http://localhost:3002/api/users/login';
 
-  useEffect(() => {}, []);
   const login = e => {
     let data = { email: emailLog, password: passwordLog };
     e.preventDefault();
@@ -26,6 +25,7 @@ const LoginForm = () => {
         localStorage.setItem('userId', response.data.userId);
         localStorage.setItem('token', 'bearer' + ' ' + response.data.token);
         history.push('/articles');
+        history.go();
       })
       .catch(error => {
         console.log(error);
@@ -33,6 +33,7 @@ const LoginForm = () => {
   };
   const redirect = () => {
     history.push('/sinscrire');
+    history.go();
   };
   return (
     <Form>

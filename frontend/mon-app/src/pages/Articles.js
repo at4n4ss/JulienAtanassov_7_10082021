@@ -11,7 +11,6 @@ import { useHistory } from 'react-router';
 const Articles = () => {
   return (
     <div className='articles'>
-      <IsNotConnected />
       <Navigation />
       <Container>
         <Container>
@@ -30,6 +29,7 @@ const Articles = () => {
           </div>
         </Container>
       </Container>
+      <IsNotConnected />
     </div>
   );
 };

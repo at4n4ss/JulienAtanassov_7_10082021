@@ -24,6 +24,7 @@ const CreateArticle = () => {
   const [contentLog, setContentLog] = useState('');
   let userId = localStorage.getItem('userId');
   let data = { title: titleLog, content: contentLog, userId: userId };
+
   const CreateContent = e => {
     api
       .post('/', data)

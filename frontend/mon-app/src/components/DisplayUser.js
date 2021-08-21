@@ -15,9 +15,6 @@ const api = axios.create({
   }
 });
 
-const params = new URLSearchParams();
-params.append('userData', localStorage.getItem('userId'));
-
 // Composant permettant d'afficher les informations de l'utilisateur
 class DisplayUser extends Component {
   constructor(props) {
@@ -29,8 +26,9 @@ class DisplayUser extends Component {
   }
   // Requête permettant de récupérer les informations de l'utilisateur
   getUser = async () => {
+    const params = new URLSearchParams();
+    params.append('userData', localStorage.getItem('userId'));
     let data = await api.post('/', params).then(({ data }) => data);
-
     this.setState({ user: data });
   };
 

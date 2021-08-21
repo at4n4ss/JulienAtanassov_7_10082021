@@ -16,9 +16,8 @@ const api = axios.create({
     }
   }
 });
+
 // Paramètres DisplayUserContents
-const params = new URLSearchParams();
-params.append('userData', localStorage.getItem('userId'));
 
 // Composant permettant l'affichage des articles de l'utilisateur
 class DisplayUserComments extends Component {
@@ -31,11 +30,12 @@ class DisplayUserComments extends Component {
   }
   componentWillMount() {
     this.deleteUserComment = this.deleteUserComment.bind(this);
-
     this.getUserComments();
   }
   // Requête permettant de récupérer les articles de l'utilisateur
   getUserComments = async () => {
+    const params = new URLSearchParams();
+    params.append('userData', localStorage.getItem('userId'));
     let data = await api.post('/', params).then(({ data }) => data);
     this.setState({ comments: data });
   };

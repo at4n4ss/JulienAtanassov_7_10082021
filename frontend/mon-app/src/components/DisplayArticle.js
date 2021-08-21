@@ -14,6 +14,7 @@ const api = axios.create({
     }
   }
 });
+
 // Composant permettant d'afficher un article selon son id
 class DisplayArticle extends Component {
   getContentId = async () => {

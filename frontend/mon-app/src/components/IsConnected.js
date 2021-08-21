@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 // Création de l'instance axios
@@ -13,17 +13,22 @@ const api = axios.create({
 });
 
 const IsConnected = () => {
+  useEffect(() => {
+    getUser();
+  });
   let [isAuth, setIsAuth] = useState('');
   const params = new URLSearchParams();
   params.append('userData', localStorage.getItem('userId'));
+  let userId = localStorage.getItem('userId');
   const getUser = async () => {
     const data = await api.post('/', params).then(({ data }) => data);
-    console.log(data);
-    if (data) {
+    console.log(data.id.toString());
+    console.log(userId);
+    if (data.id.toString() === userId) {
       setIsAuth(true);
     }
   };
-  getUser();
+
   const isUserAuth = () => {
     if (isAuth === true) {
       return true;

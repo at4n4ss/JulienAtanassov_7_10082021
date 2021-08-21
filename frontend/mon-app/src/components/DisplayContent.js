@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/style.css';
 import Card from 'react-bootstrap/Card';
-import Container from 'react-bootstrap/Container';
 import axios from 'axios';
 
 // Création de l'instance axios
@@ -25,7 +24,7 @@ class DisplayContent extends Component {
     super(props);
     this.getContents();
   }
-  componentDidMount() {
+  componentWillMount() {
     this.getContents();
   }
   // Requête permettant de récupérer tous les articles

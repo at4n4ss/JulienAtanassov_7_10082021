@@ -1,11 +1,25 @@
+// Imports
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const apiRouter = require('./routes/apiRouter').router;
 const app = express();
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+require('dotenv').config();
+// express rate Limiter security
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 1000 // limit each IP to 1000 requests per windowMs
+});
+app.use(limiter);
+// Cors
 app.use(cors());
+// App express
 app.use(express.json());
+// Helmet security
+app.use(helmet());
 // Body parser config
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

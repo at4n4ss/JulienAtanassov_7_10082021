@@ -16,6 +16,7 @@ const api = axios.create({
     }
   }
 });
+
 // Paramètres DisplayUserContents
 const params = new URLSearchParams();
 params.append('dataUser', localStorage.getItem('userId'));

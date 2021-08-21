@@ -30,18 +30,21 @@ const Navigation = () => {
     console.log(params.UserData);
     let data = await api.post('/', params).then(({ data }) => data);
     console.log(data.isAdmin);
-    setIsAuth(data.isAdmin);
+    if (data.isAdmin === 2) {
+      setIsAuth(true);
+    } else {
+      setIsAuth(false);
+    }
   };
   useEffect(() => {
-    console.log('isAuth updated', isAuth);
-  }, [isAuth]);
-  useEffect(() => {
     getUser();
-  }, [history]);
+    isUserAuth();
+  });
 
   const isUserAuth = () => {
-    if (isAuth === 2) {
+    if (isAuth === true) {
       console.log(isAuth);
+
       return true;
     } else {
       return false;

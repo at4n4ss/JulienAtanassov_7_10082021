@@ -12,7 +12,6 @@ import Container from 'react-bootstrap/Container';
 const Profile = () => {
   return (
     <div className='home'>
-      <IsNotConnected />
       <Navigation />
       <Container>
         <div className='componentsContainer'>

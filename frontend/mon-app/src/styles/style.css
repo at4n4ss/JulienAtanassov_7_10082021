@@ -2,12 +2,7 @@ a {
   text-decoration: none !important;
   color: #fd3005 !important;
 }
-.nav {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-right: 0;
-}
+
 .card {
   width: auto !important;
 }
@@ -15,6 +10,12 @@ a {
   margin: 20px;
 }
 /* Header */
+.nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 0;
+}
 .containerAdminButton {
   margin-left: 10px;
 }
@@ -96,6 +97,7 @@ button:focus {
   flex-wrap: wrap;
   margin-bottom: 30px;
   justify-content: center;
+  border-radius: 20px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .loginTitle {
@@ -104,6 +106,7 @@ button:focus {
   justify-content: center;
   margin: 50px;
   padding: 20px;
+  border-radius: 20px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .loginFormTitle {
@@ -133,6 +136,7 @@ button:focus {
   padding: 20px;
 }
 .containerTitleArticles {
+  border-radius: 20px;
   padding: 30px;
   margin-top: 30px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -140,6 +144,7 @@ button:focus {
 }
 /* Profile page */
 .componentsContainer {
+  border-radius: 20px;
   padding: 30px;
   margin: 30px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -166,6 +171,7 @@ button:focus {
   flex-wrap: wrap;
 }
 .containerComments {
+  border-radius: 20px;
   padding: 20px;
   width: 100%;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;

@@ -16,13 +16,6 @@ const api = axios.create({
 });
 
 class DeleteUser extends Component {
-  state = {
-    contents: []
-  };
-  constructor(props) {
-    super(props);
-  }
-
   // Fonction permettant d'envoyer la requête afin de supprimer le compte de l'utilisateur
   deleteUser = async () => {
     let userId = localStorage.getItem('userId');

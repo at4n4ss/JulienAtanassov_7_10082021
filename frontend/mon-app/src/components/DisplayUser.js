@@ -23,7 +23,7 @@ class DisplayUser extends Component {
       user: { username: null, id: null, email: null }
     };
   }
-  componentWillMount() {
+  componentDidMount() {
     this.getUser();
   }
   // Requête permettant de récupérer les informations de l'utilisateur

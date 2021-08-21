@@ -32,10 +32,7 @@ class DisplayComments extends Component {
     this.setState({ contents: data });
   };
 
-  constructor(props) {
-    super(props);
-  }
-  componentWillMount() {
+  componentDidMount() {
     this.getContentId();
   }
   render() {

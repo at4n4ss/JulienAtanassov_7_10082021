@@ -22,11 +22,10 @@ class AdminContents extends Component {
   state = {
     contents: []
   };
-  constructor(props) {
-    super(props);
+
+  componentDidMount() {
     this.getUserContents();
   }
-
   // Requête permettant de récupérer les articles des utilisateurs
   getUserContents = async () => {
     let data = await api.get('/').then(({ data }) => data);

@@ -34,7 +34,7 @@ class DisplayArticle extends Component {
       article: { title: null, id: null, content: null }
     };
   }
-  componentWillMount() {
+  componentDidMount() {
     this.getContentId();
   }
   render() {

@@ -24,10 +24,8 @@ class DisplayUserComments extends Component {
   state = {
     comments: []
   };
-  constructor(props) {
-    super(props);
-  }
-  componentWillMount() {
+
+  componentDidMount() {
     this.deleteUserComment = this.deleteUserComment.bind(this);
     this.getUserComments();
   }

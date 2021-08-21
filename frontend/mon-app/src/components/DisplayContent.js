@@ -20,10 +20,8 @@ class DisplayContent extends Component {
   state = {
     contents: []
   };
-  constructor(props) {
-    super(props);
-  }
-  componentWillMount() {
+
+  componentDidMount() {
     this.getContents();
   }
   // Requête permettant de récupérer tous les articles

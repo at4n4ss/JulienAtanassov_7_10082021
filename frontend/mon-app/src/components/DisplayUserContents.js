@@ -26,10 +26,8 @@ class DisplayUserContents extends Component {
   state = {
     contents: []
   };
-  constructor(props) {
-    super(props);
-  }
-  componentWillMount() {
+
+  componentDidMount() {
     this.getUserContents();
   }
   // Requête permettant de récupérer les articles de l'utilisateur

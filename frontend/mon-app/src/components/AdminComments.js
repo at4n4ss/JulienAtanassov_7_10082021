@@ -22,11 +22,10 @@ class AdminComments extends Component {
   state = {
     comments: []
   };
-  constructor(props) {
-    super(props);
+
+  componentDidMount() {
     this.getUserComments();
   }
-
   // Requête permettant de récupérer tous les commentaires des utilisateurs
   getUserComments = async () => {
     let data = await api.get('/all/').then(({ data }) => data);

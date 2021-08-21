@@ -32,7 +32,7 @@ export default Register;
   <Container>
     <Container>
       <div className='loginTitle'>
-        <h1> Bienvenue sur Groupomania</h1>
+        <h1>Bienvenue sur Groupomania</h1>
       </div>
       <div className='containerLogin'>
         <div className='loginFormTitle'>

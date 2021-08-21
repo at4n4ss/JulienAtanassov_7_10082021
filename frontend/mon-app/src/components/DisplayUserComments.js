@@ -31,6 +31,8 @@ class DisplayUserComments extends Component {
   }
   componentWillMount() {
     this.deleteUserComment = this.deleteUserComment.bind(this);
+
+    this.getUserComments();
   }
   // Requête permettant de récupérer les articles de l'utilisateur
   getUserComments = async () => {
@@ -39,11 +41,16 @@ class DisplayUserComments extends Component {
   };
 
   // Requête permettant de supprimer le contenu selectionné par l'utilisateur
-  deleteUserComment(commentId) {
+  async deleteUserComment(commentId) {
     const paramsId = new URLSearchParams();
     paramsId.append('commentId', commentId);
-    api.post('/delete', paramsId).catch();
-    this.getUserComments();
+    await api
+      .post('/delete', paramsId)
+      .then(() => this.getUserComments())
+      .then(() => {
+        window.location.reload();
+      })
+      .catch();
   }
   render() {
     return (

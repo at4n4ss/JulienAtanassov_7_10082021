@@ -93,7 +93,6 @@ module.exports = {
     let contentId = req.body.contentId;
 
     models.Content.destroy({ where: { id: contentId } });
-    models.Comment.destroy({ where: { contentId: contentId } });
 
     res
       .status(200)

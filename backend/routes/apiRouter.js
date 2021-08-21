@@ -15,6 +15,7 @@ exports.router = (function () {
   apiRouter.route('/users/me/').post(auth, usersCtrl.getUserProfile);
   apiRouter.route('/users/me/').put(auth, usersCtrl.updateUserProfile);
   apiRouter.route('/users/me/delete').post(auth, usersCtrl.deleteUserProfile);
+
   // Routes  des articles
   apiRouter.route('/content/new/').post(contentCtrl.createContent);
   apiRouter.route('/content/').get(auth, contentCtrl.listContents);
@@ -32,5 +33,8 @@ exports.router = (function () {
   apiRouter
     .route('/comment/me/delete')
     .post(auth, commentCtrl.deleteUserComment);
+  apiRouter
+    .route('/content/me/comment/delete')
+    .post(auth, commentCtrl.deleteContentComments);
   return apiRouter;
 })();

@@ -127,5 +127,14 @@ module.exports = {
           'Une erreur est survenu lors de la récupération des commentaires '
       });
     }
+  },
+  deleteContentComments: function (req, res) {
+    let contentId = req.body.contentId;
+    models.Comment.destroy({ where: { contentId: contentId } });
+    res
+      .status(200)
+      .json({ res: 'comments deleted' })
+      .catch(err)
+      .json({ error: 'cannot delete comments' });
   }
 };

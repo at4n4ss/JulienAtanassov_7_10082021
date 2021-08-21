@@ -33,19 +33,24 @@ class DisplayUserContents extends Component {
   // Requête permettant de récupérer les articles de l'utilisateur
   getUserContents = async () => {
     let data = await api.post('/', params).then(({ data }) => data);
-    this.setState({ contents: data });
+    if (data) {
+      this.setState({ contents: data });
+    }
   };
 
   // Requête permettant de supprimer le contenu selectionné par l'utilisateur
-  async postDelete(contentId) {
+  async postDeleteContent(contentId) {
     const paramsId = new URLSearchParams();
     paramsId.append('contentId', contentId);
     await api.post('/delete', paramsId).catch();
+    await api.post('/comment/delete', paramsId).catch();
   }
   async deleteUserContent(contentId) {
-    await this.postDelete(contentId);
-    this.getUserContents();
-    window.location.reload();
+    await this.postDeleteContent(contentId)
+      .then(() => this.getUserContents())
+      .then(() => {
+        window.location.reload();
+      });
   }
   render() {
     return (

@@ -25,7 +25,9 @@ class DisplayContent extends Component {
     super(props);
     this.getContents();
   }
-
+  componentDidMount() {
+    this.getContents();
+  }
   // Requête permettant de récupérer tous les articles
   getContents = async () => {
     let data = await api.get('/').then(({ data }) => data);

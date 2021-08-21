@@ -4,12 +4,15 @@ import DisplayUser from '../components/DisplayUser';
 import CreateArticle from '../components/CreateArticle';
 import DisplayUserContents from '../components/DisplayUserContents';
 import DisplayUserComments from '../components/DisplayUserComments';
+import IsNotConnected from '../components/IsNotConnected';
+
 import DeleteUser from '../components/DeleteUser';
 import Container from 'react-bootstrap/Container';
 // Page Profile
 const Profile = () => {
   return (
     <div className='home'>
+      <IsNotConnected />
       <Navigation />
       <Container>
         <div className='componentsContainer'>

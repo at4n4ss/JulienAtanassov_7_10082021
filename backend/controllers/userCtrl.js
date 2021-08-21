@@ -2,7 +2,7 @@
 const bcrypt = require('bcrypt');
 const jwtUtils = require('../utils/jwt.utils');
 const models = require('../models');
-
+var CryptoJS = require('crypto-js');
 // RegEx
 const EMAIL_REGEX =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -42,9 +42,10 @@ module.exports = {
     })
       .then(function (userFound) {
         if (!userFound) {
+          let emailHash = CryptoJS.HmacSHA1(email, 'SECRET_KEY').toString();
           bcrypt.hash(password, 5, function (err, bcryptedPassword) {
             var newUser = models.User.create({
-              email: email,
+              email: emailHash,
               username: username,
               password: bcryptedPassword,
               isAdmin: 0
@@ -78,9 +79,9 @@ module.exports = {
       return res.status(400).json({ error: 'missing parameters' });
     }
     // TODO verify email regex / password
-
+    let emailHash = CryptoJS.HmacSHA1(email, 'SECRET_KEY').toString();
     models.User.findOne({
-      where: { email: email }
+      where: { email: emailHash }
     })
       .then(function (userFound) {
         if (userFound) {
@@ -114,7 +115,7 @@ module.exports = {
     let userId = req.body.userData;
 
     models.User.findOne({
-      attributes: ['id', 'email', 'username', 'bio', 'isAdmin'],
+      attributes: ['id', 'username', 'bio', 'isAdmin'],
       where: { id: userId }
     })
       .then(function (user) {

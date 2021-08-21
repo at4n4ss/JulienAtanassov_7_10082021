@@ -22,7 +22,7 @@ module.exports = {
 
     if (username.lenght >= 13 || username.lenght <= 2) {
       return res.status(400).json({
-        error: 'wrong username(Votre pseudo doit contenir entre 3 et 12 lettres'
+        error: 'Votre pseudo doit contenir entre 3 et 12 lettres'
       });
     }
     // Vérification des input

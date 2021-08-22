@@ -35,14 +35,14 @@ module.exports = {
           'Le mot de passe doit avoir entre 4 et 8 lettres et contenir au moins 1 chiffre '
       });
     }
-
+    let emailHash = CryptoJS.HmacSHA1(email, 'SECRET_KEY').toString();
+    console.log(emailHash);
     models.User.findOne({
       attributes: ['email'],
-      where: { email: email }
+      where: { email: emailHash }
     })
       .then(function (userFound) {
         if (!userFound) {
-          let emailHash = CryptoJS.HmacSHA1(email, 'SECRET_KEY').toString();
           bcrypt.hash(password, 5, function (err, bcryptedPassword) {
             var newUser = models.User.create({
               email: emailHash,

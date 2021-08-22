@@ -7,7 +7,7 @@ const apiRouter = require('./routes/apiRouter').router;
 const app = express();
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
-require('dotenv').config();
+
 // express rate Limiter security
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes

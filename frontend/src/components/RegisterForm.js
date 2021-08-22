@@ -27,9 +27,17 @@ const RegisterForm = () => {
         console.log(response);
       })
       .catch(error => {
-        alert(
-          "Problème lors de votre inscription. Veuillez vous assurer que votre email n'est pas déja inscrite sur ce site et que votre mot de passe contient entre 4 et 8 lettres et au moins 1 chiffre"
-        );
+        console.log(error.message);
+        if (error.message === 'Request failed with status code 409') {
+          alert(
+            'Problème lors de votre inscription. Ce compte existe déjà. Veuillez vérifier votre email et votre pseudo ou vous connecter'
+          );
+        }
+        if (error.message === 'Request failed with status code 400') {
+          alert(
+            'Problème lors de votre inscription. Votre mot de passe doit contenir entre 4 et 8 lettres et au moins 1 chiffre'
+          );
+        }
       });
   };
   return (

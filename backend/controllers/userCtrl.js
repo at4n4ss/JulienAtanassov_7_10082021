@@ -39,7 +39,7 @@ module.exports = {
     console.log(emailHash);
     models.User.findOne({
       attributes: ['email'],
-      where: { email: emailHash }
+      where: { email: emailHash, username: username }
     })
       .then(function (userFound) {
         if (!userFound) {

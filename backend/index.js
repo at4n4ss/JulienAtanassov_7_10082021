@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '123456Abc$',
+  password: 'admin',
   port: 3306,
   database: 'groupomania'
 });

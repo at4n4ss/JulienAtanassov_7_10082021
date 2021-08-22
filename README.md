@@ -2,4 +2,4 @@
 
 - Lancer le backend: depuis backend lancer npm start
 - Lancer le frontend : depuis frontend lancer npm start
-- Comptes pour tester le site: admin:admin123 (compte admin) / test:test123 (compte utilisateur)
+- Comptes pour tester le site: email:admin@admin.com mot de passe:admin123 (compte admin) / email:test@test.com mot de passe:test123 (compte utilisateur)

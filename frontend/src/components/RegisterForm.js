@@ -28,7 +28,7 @@ const RegisterForm = () => {
       .catch(error => {
         if (error.message === 'Request failed with status code 409') {
           alert(
-            'Problème lors de votre inscription. Ce compte existe déjà. Veuillez vérifier votre email ou vous connecter'
+            'Problème lors de votre inscription. Cet email existe déjà. Veuillez vérifier votre email ou vous connecter'
           );
         }
         if (error.message === 'Request failed with status code 400') {
@@ -38,7 +38,7 @@ const RegisterForm = () => {
         }
         if (error.message === 'Request failed with status code 408') {
           alert(
-            'Problème lors de votre inscription. Veuillez vérifier votre pseudo ou vous connecter'
+            'Problème lors de votre inscription. Ce pseudo existe déjà. Veuillez choisir un autre pseudo'
           );
         }
       });

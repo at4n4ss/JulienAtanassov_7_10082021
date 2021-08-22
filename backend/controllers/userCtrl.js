@@ -36,30 +36,41 @@ module.exports = {
       });
     }
     let emailHash = CryptoJS.HmacSHA1(email, 'SECRET_KEY').toString();
-    console.log(emailHash);
+
     models.User.findOne({
       attributes: ['email'],
-      where: { email: emailHash, username: username }
+      where: { email: emailHash }
     })
       .then(function (userFound) {
         if (!userFound) {
-          bcrypt.hash(password, 5, function (err, bcryptedPassword) {
-            var newUser = models.User.create({
-              email: emailHash,
-              username: username,
-              password: bcryptedPassword,
-              isAdmin: 0
-            })
-              .then(function (newUser) {
-                return res.status(201).json({
-                  userId: newUser.id
-                });
-              })
-              .catch(function (err) {
-                return res
-                  .status(500)
-                  .json({ error: 'Impossible d ajouter l utilisateur' });
+          models.User.findOne({
+            attributes: ['username'],
+            where: { username: username }
+          }).then(function (userFound) {
+            if (!userFound) {
+              bcrypt.hash(password, 5, function (err, bcryptedPassword) {
+                var newUser = models.User.create({
+                  email: emailHash,
+                  username: username,
+                  password: bcryptedPassword,
+                  isAdmin: 0
+                })
+                  .then(function (newUser) {
+                    return res.status(201).json({
+                      userId: newUser.id
+                    });
+                  })
+                  .catch(function (err) {
+                    return res
+                      .status(500)
+                      .json({ error: 'Impossible d ajouter l utilisateur' });
+                  });
               });
+            } else {
+              return res
+                .status(408)
+                .json({ error: 'Cet username existe déjà' });
+            }
           });
         } else {
           return res.status(409).json({ error: 'Cet utilisateur existe déjà' });

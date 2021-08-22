@@ -24,18 +24,21 @@ const RegisterForm = () => {
       .then(response => {
         alert('Compte créé');
         history.push('/');
-        console.log(response);
       })
       .catch(error => {
-        console.log(error.message);
         if (error.message === 'Request failed with status code 409') {
           alert(
-            'Problème lors de votre inscription. Ce compte existe déjà. Veuillez vérifier votre email et votre pseudo ou vous connecter'
+            'Problème lors de votre inscription. Ce compte existe déjà. Veuillez vérifier votre email ou vous connecter'
           );
         }
         if (error.message === 'Request failed with status code 400') {
           alert(
             'Problème lors de votre inscription. Votre mot de passe doit contenir entre 4 et 8 lettres et au moins 1 chiffre'
+          );
+        }
+        if (error.message === 'Request failed with status code 408') {
+          alert(
+            'Problème lors de votre inscription. Veuillez vérifier votre pseudo ou vous connecter'
           );
         }
       });

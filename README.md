@@ -1,5 +1,6 @@
-backend: node.js / SQL
-frontend: react.js
+- backend: node.js / SQL
+
+- frontend: react.js
 
 # JulienAtanassov_7_10082021
 - Installer tous les modules: depuis  /backend: npm install , depuis /frontend: npm install
